@@ -16,6 +16,15 @@ AFPSCharacter::AFPSCharacter()
 		FPSCameraComponent->bUsePawnControlRotation = true;
 	}
 
+	if (!FPSMesh) {
+		FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+		FPSMesh->SetupAttachment(FPSCameraComponent);
+		FPSMesh->bCastDynamicShadow = false;
+		FPSMesh->CastShadow = false;
+	}
+
+	GetMesh()->SetOwnerNoSee(true);
+
 	UE_LOG(LogTemp, Warning, TEXT("Constructor Called from FPSCharacter"));
 }
 
