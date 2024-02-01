@@ -19,4 +19,22 @@ void AFPSGameMode::StartPlay()
 	// Shortcut to log to console
 	// NOTE: This is new so there could be issues
 	// UE_LOGFMT(LogTemp, Warning, "This is an int {TheInt}", ("TheInt", test));
+
+	ChangeMenuWidget(UserWidgetPrefab);
+}
+
+void AFPSGameMode::ChangeMenuWidget(TSubclassOf<UFPSUserWidget> NewWidgetClass)
+{
+	// 1. If we have one, remove it
+	if (CurrentWidget != nullptr) {
+		CurrentWidget->RemoveFromParent();
+		CurrentWidget = nullptr;
+	}
+
+	// 2. If we don't one, add it the viewport
+	if (NewWidgetClass != nullptr) {
+		CurrentWidget = CreateWidget<UFPSUserWidget>(GetWorld(), NewWidgetClass);
+		CurrentWidget->AddToViewport();
+	}
+	
 }

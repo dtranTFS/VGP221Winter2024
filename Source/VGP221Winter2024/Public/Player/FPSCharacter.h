@@ -7,6 +7,8 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/Character.h"
 #include "Projectile/FPSProjectile.h"
+#include "Kismet/GameplayStatics.h"
+#include "FPSGameMode.h"
 #include "FPSCharacter.generated.h"
 
 
@@ -53,4 +55,8 @@ public:
 	void EndJump();
 
 	void Fire();
+
+	// Temp health code
+	float Health = 100;
+	const float MaxHealth = 100;
 };
