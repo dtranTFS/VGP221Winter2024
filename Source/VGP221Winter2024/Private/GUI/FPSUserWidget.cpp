@@ -27,10 +27,10 @@ void UFPSUserWidget::SetHealthBar(float percentage)
 	HealthBar->SetPercent(percentage);
 }
 
-void UFPSUserWidget::SetScore(int newScore)
+void UFPSUserWidget::SetScore(int amount)
 {
 	if (!ScoreText) return;
 
-	UIScore += newScore;
+	UIScore += amount;
 	ScoreText->SetText(FText::FromString("Score: " + FString::FromInt(UIScore)));
 }

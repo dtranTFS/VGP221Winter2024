@@ -37,6 +37,7 @@ AFPSProjectile::AFPSProjectile()
 			ProjectileMeshComponent->SetStaticMesh(SphereMesh.Object);
 		}
 
+		// TO NOTE: In 5.3 this might be an issue with saving blueprints
 		static ConstructorHelpers::FObjectFinder<UMaterial>SphereMaterial(TEXT("/Game/Materials/M_Projectile.M_Projectile"));
 		if (SphereMaterial.Succeeded())
 		{
