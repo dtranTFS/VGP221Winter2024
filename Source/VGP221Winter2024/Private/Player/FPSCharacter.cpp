@@ -89,15 +89,6 @@ void AFPSCharacter::EndJump()
 
 void AFPSCharacter::Fire()
 {
-	// Easy way to acccess the gamemode
-	AFPSGameMode* Gamemode = Cast<AFPSGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-	if (Gamemode) {
-		Health -= 10;
-		float HealthPercent = Health / MaxHealth;
-
-		Gamemode->CurrentWidget->SetHealthBar(HealthPercent);
-	}
-
 	// Rest of the fire code
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, FString::Printf(TEXT("Player Fired Pressed")));
 
@@ -132,5 +123,21 @@ void AFPSCharacter::Fire()
 			Projectile->FireInDirection(LaunchDirection);
 		}
 	}
+}
+
+float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	// Easy way to acccess the gamemode
+	AFPSGameMode* Gamemode = Cast<AFPSGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+	if (Gamemode) {
+		Health -= DamageAmount;
+		float HealthPercent = Health / MaxHealth;
+
+		Gamemode->CurrentWidget->SetHealthBar(HealthPercent);
+	}
+
+	return FinalDamage;
 }
 

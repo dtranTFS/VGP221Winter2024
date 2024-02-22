@@ -59,4 +59,6 @@ public:
 	// Temp health code
 	float Health = 100;
 	const float MaxHealth = 100;
+
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 };
