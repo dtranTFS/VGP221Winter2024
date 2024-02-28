@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "Enemy/EnemyAIController.h"
+#include "Player/FPSCharacter.h"
+#include "Engine/DamageEvents.h"
 #include "Task_Attack.generated.h"
 
 /**

@@ -38,8 +38,6 @@ public:
 	UFUNCTION()
 	void SetCanSeePlayer(bool SeePlayer, UObject* Player);
 
-	void AttackPlayer();
-
 	FTimerHandle RetriggerableTimerHandle;
 	FTimerDelegate FunctionDelegate;
 	void RunTriggerableTimer();
